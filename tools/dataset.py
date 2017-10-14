@@ -1,6 +1,7 @@
 import os
 
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 import tools.text_processing as tp
 
@@ -66,5 +67,8 @@ def balance_dataset_len(ds1_len, ds2_len, max_diff=0.1):
     sm, lg = int(sm), int(lg)
     return (lg, sm) if ds1_len > ds2_len else (sm, lg)
 
-def load_dataset(path):
-    return pd.read_csv(path)
+
+def load_dataset(path, valid_size=0.05):
+    data = pd.read_csv(path)
+    return train_test_split(data['data'].values, data['label'].values, test_size=valid_size,
+                                                        random_state=42)
