@@ -1,3 +1,5 @@
+import numpy as np
+
 class BaseModel:
     classifier = None
 
@@ -9,3 +11,8 @@ class BaseModel:
 
     def predict(self, data):
         return self.classifier.predict(data)
+
+    def test(self, data, labels):
+        result = self.predict(data)
+        return np.mean(result == labels)
+

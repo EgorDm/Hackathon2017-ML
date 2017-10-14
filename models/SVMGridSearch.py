@@ -6,7 +6,7 @@ from sklearn.pipeline import Pipeline
 from models.BaseModel import BaseModel
 
 
-class SVMGridSearchCV(BaseModel):
+class SVMGridSearch(BaseModel):
     def __init__(self) -> None:
         super().__init__()
         parameters = {
