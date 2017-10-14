@@ -11,7 +11,7 @@ def init():
     parameters = {
         'vect__ngram_range': [(1, 1), (1, 2)],
         'tfidf__use_idf': (True, False),
-        'clf__alpha': (1e-2, 1e-3),
+        'clf-svm__alpha': (1e-2, 1e-3),
     }
     classifier = Pipeline([
         ('vect', CountVectorizer()),
