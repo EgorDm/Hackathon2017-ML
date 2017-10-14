@@ -6,8 +6,7 @@ from models.BaseModel import BaseModel
 
 
 class NaiveBayes(BaseModel):
-    def __init__(self) -> None:
-        super().__init__()
+    def build_model(self):
         self.classifier = Pipeline([
             ('vect', CountVectorizer()),
             ('tfidf', TfidfTransformer()),

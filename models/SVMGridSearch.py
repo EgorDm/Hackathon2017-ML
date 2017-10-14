@@ -7,8 +7,7 @@ from models.BaseModel import BaseModel
 
 
 class SVMGridSearch(BaseModel):
-    def __init__(self) -> None:
-        super().__init__()
+    def build_model(self):
         parameters = {
             'vect__ngram_range': [(1, 1), (1, 2)],
             'tfidf__use_idf': (True, False),
