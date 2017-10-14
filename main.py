@@ -1,3 +1,4 @@
-#from tools.dataset import combine_data
+from tools.dataset import combine_data
 
-#combine_data('data/positives/raw','data/positives/dataset.csv')
+combine_data('data/positives/raw','data/positives/dataset.csv')
+

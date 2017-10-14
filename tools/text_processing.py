@@ -28,6 +28,7 @@ def clean_text(text):
     words = clean_list(words)
     words = remove_stopwords(words, 'english')
     words = remove_stopwords(words, 'dutch')
+    words = apply_blacklist(words)
     text = ' '.join(words)
 
     return text
@@ -36,6 +37,11 @@ def clean_text(text):
 def remove_stopwords(words, lang='english'):
     stops = set(corpus.stopwords.words(lang))
     return [w for w in words if not w in stops]
+
+def apply_blacklist(words):
+    with open('data/word_blacklist.txt', 'r') as f:
+        blacklist = f.read().splitlines()
+    return [w for w in words if not w in blacklist]
 
 
 def clean_list(l):
