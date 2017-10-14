@@ -65,3 +65,6 @@ def balance_dataset_len(ds1_len, ds2_len, max_diff=0.1):
     lg = sm + lg * max_diff
     sm, lg = int(sm), int(lg)
     return (lg, sm) if ds1_len > ds2_len else (sm, lg)
+
+def load_dataset(path):
+    return pd.read_csv(path)
