@@ -5,7 +5,7 @@ import pandas as pd
 import tools.text_processing as tp
 
 
-def combine_data(in_path, out_filepath):
+def combine_data(in_path, out_filepath, min_len=20):
     if not os.path.exists(in_path): raise Exception('Invalid data location: ' + in_path)
     data = []
     print('Processing data')
@@ -15,7 +15,6 @@ def combine_data(in_path, out_filepath):
             with open(os.path.join(in_path, filename), 'r') as file:
                 contents = file.readlines()
             contents = contents[1:]
-            # todo clean
             data.append(''.join(contents))
         except:
             print('Could not read file: {}'.format(os.path.join(in_path, filename)))
@@ -42,14 +41,16 @@ def combine_datasets(positive_path, negative_path, out_filepath):
     print('Saved dataset')
 
 
-def label_data(path, label):
+def label_data(path, label, min_len=50):
     if not os.path.exists(path): raise Exception('Invalid data location: ' + path)
     df = pd.read_csv(path)
     data = []
     labels = []
     for d in df['text']:
         try:
-            data.append(tp.clean_text(d))
+            text = tp.clean_text(d)
+            if len(text) < min_len: continue
+            data.append(text)
             labels.append(label)
         except:
             pass
