@@ -2,6 +2,7 @@ data/*
 !data/.gitkeep
 .idea
 .tmp
+saves/*
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
